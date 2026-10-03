@@ -1,105 +1,110 @@
-# Стиль-перенос (Style Transfer) для мобильных устройств
-
-Этот проект реализует задачу переноса стиля с использованием машинного обучения и оптимизации модели для мобильных устройств. Вдохновленный приложением Prisma, цель проекта — создать мобильное приложение или веб-прототип, который выполняет инференс изображений с помощью модели переноса стиля, обученной с использованием TensorFlow и TensorFlow Lite.
-
-## Цели проекта
-
-* Обучить модель для переноса стиля на изображениях.
-* Оптимизировать модель для работы на мобильных устройствах с использованием TensorFlow Lite.
-* Разработать мобильное приложение для выполнения инференса на устройствах Android (или веб-прототип с использованием OpenCV и Flask).
-* Продемонстрировать работу модели с примерами инференса изображений.
-* Создать видео, демонстрирующее работу приложения или веб-прототипа.
-
-## Этапы выполнения
-
-### Этап 1: Подготовка данных и обучение модели
-
-1. **Подготовка данных:**
-    - Используются датасеты для стилей и изображений:
-        - Painter by Number (PBN)
-        - Describable Textures (DTD)
-        - ImageNet
-        - Также могут быть использованы датасеты WikiArt для стилей и COCO для изображений.
-    - Модели для переноса стиля обучаются на этих данных.
-
-2. **Обучение модели:**
-    - Модель обучена с использованием предварительно обученных сетей (например, VGG, Inception-v3).
-    - Для оценки обучения используется инференс на изображениях.
-
-3. **Репозиторий:**
-    - Репозиторий включает:
-        - Папки с приложением и обучением.
-        - Примеры инференса на изображениях.
-        - Видео примеры работы модели.
-
-### Этап 2: Перевод модели в формат TensorFlow Lite
-
-1. После завершения обучения модель конвертируется в формат TensorFlow Lite для использования на мобильных устройствах.
-2. Используется команда для преобразования модели в TensorFlow Lite, что позволяет ускорить инференс на мобильных устройствах и снизить потребление ресурсов.
-
-### Этап 3: Разработка мобильного приложения или веб-прототипа
-
-1. **Мобильное приложение (Android/iOS):**
-    - Используется Android Studio для создания приложения.
-    - Включает реализацию инференса на устройстве с использованием TensorFlow Lite.
-    - Приложение позволяет пользователю загрузить изображение и применить к нему перенос стиля.
-
-2. **Веб-приложение/OpenCV:**
-    - В случае использования веб-приложения создается Flask сервер, который выполняет инференс с использованием OpenCV.
-    - Для чтения изображений с веб-камеры используется OpenCV, а результаты выводятся в отдельное окно.
-
-### Этап 4: Демонстрация работы
-
-1. **Видео инференса:**
-    - Создается видеодоказательство работы модели на изображениях, показывающее, как приложение выполняет перенос стиля в реальном времени.
-
-2. **Тестирование:**
-    - Прототип тестируется на различных устройствах или эмуляторах Android для проверки производительности и стабильности приложения.
-
-## Структура репозитория
-
-/
-├── app/ # Приложение для мобильных устройств или веб-прототип │ └── ...
-├── training/ # Скрипты для обучения модели │ └── ...
-├── README.md # Этот файл с инструкциями ├── model/ # Обученная модель и файл TensorFlow Lite │ └── ...
-└── video/ # Видео демонстрации работы модели └── ...
-
-
-## Установка и использование
-
-1. **Клонируйте репозиторий:**
-
-    ```bash
-    git clone https://github.com/ваш_репозиторий.git
-    cd ваш_репозиторий
-    ```
-
-2. **Запустите обучение модели:**
-    Обучите модель с использованием предоставленных скриптов:
-
-    ```bash
-    python train_model.py
-    ```
-
-3. **Конвертируйте модель в TensorFlow Lite:**
-    Для конвертации обученной модели в формат TensorFlow Lite выполните команду:
-
-    ```bash
-    tflite_convert --saved_model_dir=model/ --output_file=model/model.tflite
-    ```
-
-4. **Запустите приложение:**
-    - Если вы разрабатываете мобильное приложение на Android, откройте проект в Android Studio и скомпилируйте его.
-    - Для веб-приложения настройте сервер Flask с использованием OpenCV для инференса.
-
-## Видео демонстрации
-
-Видео с демонстрацией работы приложения можно найти [здесь](ссылка_на_видео).
-
-## Лицензия
-
-Этот проект лицензируется по лицензии MIT. Подробности смотрите в файле LICENSE.
-
-## Автор: Aleksandr Denissov
-
-## Дата: 2024
+# 🎨 Mobile Neural Style Transfer
+ 
+## 📌 Project Overview
+ 
+This project implements neural style transfer optimized for mobile devices using TensorFlow and TensorFlow Lite.
+ 
+Inspired by applications such as Prisma, the goal of the project is to transform ordinary images into artistic compositions by transferring visual styles from reference artworks.
+ 
+The project explores deep learning techniques for image stylization while focusing on efficient deployment for mobile and lightweight environments.
+ 
+---
+ 
+## 🎯 Project Objectives
+ 
+- Train neural style transfer models
+- Apply artistic styles to user images
+- Optimize models for mobile devices
+- Convert trained models to TensorFlow Lite
+- Explore real-time image stylization
+- Develop a mobile or web-based inference prototype
+ 
+---
+ 
+## 🖼 Dataset
+ 
+Style transfer experiments were conducted using publicly available datasets, including:
+ 
+- WikiArt
+- Painter by Numbers (PBN)
+- Describable Textures Dataset (DTD)
+- ImageNet
+- COCO Dataset
+ 
+---
+ 
+## 🔍 Project Workflow
+ 
+### 1. Data Preparation
+ 
+- Collection of style images
+- Collection of content images
+- Dataset preprocessing
+ 
+### 2. Model Training
+ 
+- Transfer learning techniques
+- Neural style transfer architecture
+- Training and validation
+ 
+### 3. Model Optimization
+ 
+- TensorFlow Lite conversion
+- Mobile inference optimization
+- Resource consumption reduction
+ 
+### 4. Deployment
+ 
+- Mobile application prototype
+- Flask web prototype
+- OpenCV-based image processing
+ 
+---
+ 
+## 🤖 Technologies
+ 
+- Python
+- TensorFlow
+- TensorFlow Lite
+- OpenCV
+- Flask
+- NumPy
+- Jupyter Notebook
+ 
+---
+ 
+## 📱 Mobile AI Features
+ 
+- Style transfer on mobile devices
+- Lightweight model deployment
+- TensorFlow Lite optimization
+- Real-time image processing
+ 
+---
+ 
+## 🚀 Installation
+ 
+Clone the repository:
+ 
+```bash
+git clone https://github.com/Alex1988Den/Mobile-Neural-Style-Transfer.git
+cd Mobile-Neural-Style-Transfer
+```
+ 
+Install dependencies:
+ 
+```bash
+pip install -r requirements.txt
+```
+ 
+Run the application:
+ 
+```bash
+python app.py
+```
+ 
+---
+ 
+## 💡 Applications
+ 
+- Mobile photo editing
